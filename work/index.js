@@ -83,3 +83,21 @@ console.log(
   a3(1)(2)(3),
   a3(1, 2) (3)
 )
+
+// composição
+
+// h = f . g
+// h(x) = f(g(x))
+// const h = compose(f, g)
+
+// f = f1 . f2 (...) . fm
+// em pseudo-código: f(x) = f1( f2( ... fn(x) ...
+// em pseudo-código: const f = compose(f1, f2) ...
+
+const compose = (...fns) => x =>
+fns.reduceRight((x, y) => f(y), x)
+
+// algo que pode ser mais fácil de ler: pipe
+// h = f |> g
+// h(x) = g( f (x) )
+
