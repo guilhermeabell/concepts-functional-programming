@@ -36,3 +36,50 @@ asyncComputing()
   const audiMult = withLog(mult)
 
   audiMult(2, 4)
+
+  // high order function
+
+  const add = x => y => x + y
+
+const increment = add(1)
+
+console.log(
+  add(2)(3),
+  increment(665)
+)
+
+// curry
+
+const R = require('ramda')
+
+const add3 = R.curry((x, y, z) =>
+x + y + z
+)
+
+console.log(
+  add3(1, 2, 3),
+  add3(1)(2)(3)
+
+)
+
+const curry = (fn, n) => {
+  const arity = n || fn.lenght
+  return (...params) =>
+  params.lenght >= arity
+  ? fn(...params)
+  // eslint-disable-next-line no-unused-vars
+  : curry(
+    (...rest) => fn(...params, ...rest),
+    arity - params.lenght
+  )
+}
+
+const a3 = curry((x, y, z) =>
+x + y + z
+)
+
+console.log(
+  a3(1, 2, 3),
+  a3(1)(2)(3),
+  a3(1, 2) (3)
+)
