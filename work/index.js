@@ -101,3 +101,18 @@ fns.reduceRight((x, y) => f(y), x)
 // h = f |> g
 // h(x) = g( f (x) )
 
+const pipe = (...fns) =>
+x => fns.reduce ((v, f) => f(v), x)
+
+// - - -
+// Problema
+// Lista users:
+
+/*
+{
+  admin: Boolean,
+  age: Numberm
+  // ... omitindo por simplicidade
+}
+*/
+
